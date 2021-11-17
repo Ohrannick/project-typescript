@@ -1,4 +1,4 @@
-export function renderBlock(elementId, html) {
+export function renderBlock(elementId: string, html: string) {
   const element = document.getElementById(elementId);
   element.innerHTML = html;
 }

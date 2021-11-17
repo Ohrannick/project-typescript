@@ -4,7 +4,7 @@ import { renderUserBlock } from './user.js';
 import { renderToast } from './lib.js';
 
 window.addEventListener('DOMContentLoaded', () => {
-  renderUserBlock('0');
+  renderUserBlock('Wade ---- Warren', '/img/avatar.png', '0');
   renderSearchFormBlock();
   renderSearchStubBlock();
   renderToast(
@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', () => {
       type: 'success',
     },
     {
-      name: 'Понял',
+      name: 'Понял...',
       handler: () => {
         console.log('Уведомление закрыто');
       },
