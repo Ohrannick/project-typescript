@@ -1,6 +1,11 @@
 import { renderBlock } from './lib.js'
 
-export function renderSearchFormBlock () {
+export function renderSearchFormBlock (newDate: Date) {
+let min = newDate.toISOString().slice(0,10)
+let max = new Date(newDate.getFullYear(), newDate.getMonth()+2, 0).toISOString().slice(0,10)
+let checkInDate = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate()+1).toISOString().slice(0,10)
+let checkOutDate = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate()+3).toISOString().slice(0,10)
+
   renderBlock(
     'search-form-block',
     `
@@ -20,11 +25,11 @@ export function renderSearchFormBlock () {
         <div class="row">
           <div>
             <label for="check-in-date">Дата заезда</label>
-            <input id="check-in-date" type="date" value="2021-05-11" min="2021-05-11" max="2021-06-30" name="checkin" />
+            <input id="check-in-date" type="date" value=${checkInDate} min=${min} max=${max} name="checkin" />
           </div>
           <div>
             <label for="check-out-date">Дата выезда</label>
-            <input id="check-out-date" type="date" value="2021-05-13" min="2021-05-11" max="2021-06-30" name="checkout" />
+            <input id="check-out-date" type="date" value=${checkOutDate} min=${min} max=${max} name="checkout" />
           </div>
           <div>
             <label for="max-price">Макс. цена суток</label>
