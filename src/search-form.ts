@@ -1,10 +1,20 @@
 import { renderBlock } from './lib.js'
 
 export function renderSearchFormBlock (newDate: Date) {
-let min = newDate.toISOString().slice(0,10)
-let max = new Date(newDate.getFullYear(), newDate.getMonth()+2, 0).toISOString().slice(0,10)
-let checkInDate = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate()+1).toISOString().slice(0,10)
-let checkOutDate = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate()+3).toISOString().slice(0,10)
+
+interface ISearchFormData {
+  min: string;
+  max: string;
+  checkInDate: string;
+  checkOutDate: string;
+}
+
+const searchForm: ISearchFormData = {
+  min: newDate.toISOString().slice(0,10),
+  max: new Date(newDate.getFullYear(), newDate.getMonth()+2, 0).toISOString().slice(0,10),
+  checkInDate: new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate()+1).toISOString().slice(0,10),
+  checkOutDate: new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate()+3).toISOString().slice(0,10),
+}
 
   renderBlock(
     'search-form-block',
@@ -25,18 +35,18 @@ let checkOutDate = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.g
         <div class="row">
           <div>
             <label for="check-in-date">Дата заезда</label>
-            <input id="check-in-date" type="date" value=${checkInDate} min=${min} max=${max} name="checkin" />
+            <input id="check-in-date" type="date" value=${searchForm.checkInDate} min=${searchForm.min} max=${searchForm.max} name="checkin" />
           </div>
           <div>
             <label for="check-out-date">Дата выезда</label>
-            <input id="check-out-date" type="date" value=${checkOutDate} min=${min} max=${max} name="checkout" />
+            <input id="check-out-date" type="date" value=${searchForm.checkOutDate} min=${searchForm.min} max=${searchForm.max} name="checkout" />
           </div>
           <div>
             <label for="max-price">Макс. цена суток</label>
             <input id="max-price" type="text" value="" name="price" class="max-price" />
           </div>
           <div>
-            <div><button>Найти</button></div>
+            <div><button ${onclick=() => console.log('Дата заезда: ', searchForm.checkInDate, ', дата выезда: ', searchForm.checkOutDate)} >Найти</button></div>
           </div>
         </div>
       </fieldset>
