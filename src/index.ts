@@ -2,10 +2,11 @@ import { renderSearchFormBlock } from './search-form.js';
 import { renderSearchStubBlock } from './search-results.js';
 import { renderUserBlock } from './user.js';
 import { renderToast } from './lib.js';
+import { getTodosByCount } from './todos.js'
 
-localStorage.setItem ('username', '+Wade Warren+');
+localStorage.setItem ('username', 'Wade Warren');
 localStorage.setItem ('avatarUrl', '/img/avatar.png');
-localStorage.setItem ('count', '5');
+localStorage.setItem ('count', '11');
 
 const getUserData = (value: unknown) => {
   if (value == null){
@@ -41,4 +42,5 @@ window.addEventListener('DOMContentLoaded', () => {
       },
     }
   );
+  getTodosByCount (5);
 });

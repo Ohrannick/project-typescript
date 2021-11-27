@@ -10,13 +10,15 @@ export function renderUserBlock(name: string, src: string, favoriteItemsAmount?:
     'user-block',
     `
     <div class="header-container">
-      <img class="avatar" src=${src} alt="Wade Warren" />
+      <img class="avatar" src='${src}' alt="${name}" />
       <div class="info">
           <p class="name">${name}</p>
           <p class="fav">
-            <i class="heart-icon${
-  hasFavoriteItems ? ' active' : ''
-}"></i>${favoritesCaption}
+            <i class="heart-icon${hasFavoriteItems 
+              ? ' active' 
+              : ''}"
+            >
+            </i>${favoritesCaption}
           </p>
       </div>
     </div>
